@@ -13,22 +13,29 @@ class Game extends Component {
         const solidPlayer = this.getPlayerFromID( game.players.solid );
         const stripedPlayer = this.getPlayerFromID( game.players.striped );
         return (
-            <li className="list-group-item list-group-item-dark d-flex justify-content-between align-items-start p-3 m-0" >
-                <h1 className="col">{`Game ${this.props.game.gameNum}`}</h1>
-                
-                <div className="col d-flex flex-column align-items-start">
+            <li className="list-group-item list-group-item-dark d-md-flex align-items-stretch" >
+
+                <div className="h1 col-12 col-md-4 d-flex d-inline-flex mt-2 mb-4 align-items-center">
+                    <span>{`Game ${this.props.game.gameNum}`}</span>
+                </div>
+
+
+                <div className="col-12 col-sm-6 col-md-4 d-inline-flex flex-column">
                     <div className="h4" >{ solidPlayer.playerName } </div>
                     <div className=""><b>{`Solid Player `}{ this.getStatusBadge( 'solid', game.status ) }</b></div>
                     <div>{`Select the balls sunk by ${ solidPlayer.playerName }`}</div>
-                    <div className="">{ this.getBalls( game, 'solid' ) }</div>
+                    <div className="mt-2 mb-4">{ this.getBalls( game, 'solid' ) }</div>
                 </div>
 
-                <div className="col d-flex flex-column justify-content-start align-items-start">
+                <div className="col-12 col-sm-6 col-md-4 d-inline-flex flex-column">
                     <div className="h4" >{ stripedPlayer.playerName }</div>
                     <div className=""><b>{`Striped Player `}{ this.getStatusBadge( 'striped', game.status ) }</b></div>
                     <div>{`Select the balls sunk by ${ stripedPlayer.playerName }`}</div>
-                    <div className="">{ this.getBalls( game, 'striped' ) }</div>
+                    <div className="mt-2 mb-4">{ this.getBalls( game, 'striped' ) }</div>
                 </div>
+         
+
+                
             </li>
         );
     }

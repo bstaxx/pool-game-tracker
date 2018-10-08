@@ -19,6 +19,7 @@ const initialState = {
     gameTracker: {
         newPlayerName: '',
         newGame: {
+            gameNum: '',
             players: {
                 striped: '',
                 solid: ''
@@ -51,7 +52,32 @@ const initialState = {
             { playerNum: '5', playerName: 'Roy' },
         ],
         games: [
-            
+            {
+                gameNum: '1',
+                players: {
+                    striped: '1',
+                    solid: '2'
+                },
+                balls: [
+                    { ballNum: 0, type: 'cue', sunk: false, player: '' },
+                    { ballNum: 1, type: 'solid', sunk: false, player: '' },
+                    { ballNum: 2, type: 'solid', sunk: false, player: '' },
+                    { ballNum: 3, type: 'solid', sunk: false, player: '' },
+                    { ballNum: 4, type: 'solid', sunk: false, player: '' },
+                    { ballNum: 5, type: 'solid', sunk: false, player: '' },
+                    { ballNum: 6, type: 'solid', sunk: false, player: '' },
+                    { ballNum: 7, type: 'solid', sunk: false, player: '' },
+                    { ballNum: 8, type: 'solid', sunk: false, player: '' },
+                    { ballNum: 9, type: 'striped', sunk: false, player: '' },
+                    { ballNum: 10, type: 'striped', sunk: false, player: '' },
+                    { ballNum: 11, type: 'striped', sunk: false, player: '' },
+                    { ballNum: 12, type: 'striped', sunk: false, player: '' },
+                    { ballNum: 13, type: 'striped', sunk: false, player: '' },
+                    { ballNum: 14, type: 'striped', sunk: false, player: '' },
+                    { ballNum: 15, type: 'striped', sunk: false, player: '' }
+                ],
+                status: 'Tied'
+            }
         ]
     }
 };

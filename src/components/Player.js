@@ -8,8 +8,8 @@ class Player extends Component {
         return (
             <li className="list-group-item list-group-item-dark d-flex justify-content-between align-items-center" >
                 <div className="col col-md-auto flex-md-grow-1">
-                    <div>{`Rank ${ this.props.rank + 1 }`}</div>
                     <div className="h4" >{ this.getPlayerFromID( playerNum ).playerName }</div>
+                    <div>{`Rank ${ this.props.rank + 1 }`}</div>
                 </div>
                 <div className="col col-md-auto">
                     <span className="badge badge-success badge-pill">{`Wins: ${ playerStats.wins }`}</span>
