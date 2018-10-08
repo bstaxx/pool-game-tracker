@@ -18,7 +18,6 @@ class Players extends Component {
 
     render() {
         const players = this.getPlayers();
-        console.log( players );
         const hasPlayers = players && players.length > 0 ? true : false;
         return(
             <div className="Games">

@@ -21,7 +21,7 @@ class Player extends Component {
     }
 
     getPlayerFromID( id ) {
-        return this.props.appProps.gameTracker.players.find( player => player.playerNum == id );
+        return this.props.appProps.gameTracker.players.find( player => player.playerNum.toString() === id.toString() );
     }
 
     getPlayerStats( playerNum ) {

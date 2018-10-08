@@ -13,6 +13,7 @@ export default function gameTrackerReducer( state = {}, { type, payload } ) {
             return {
                 ...state,
                 players: payload,
+                newPlayerName: ''
             };
         case UPDATE_NEW_PLAYER_NAME:
             return {

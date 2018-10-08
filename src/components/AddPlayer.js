@@ -17,7 +17,6 @@ class AddPlayer extends Component {
 
     render() {
         const newPlayerName = this.props.appProps.gameTracker.newPlayerName;
-        console.log( this.props );
         return (
             <div className="AddPlayer p-3 bg-dark">
                 <form className="form-inline" >

@@ -41,7 +41,7 @@ class Game extends Component {
     }
 
     getPlayerFromID( id ) {
-        return this.props.appProps.gameTracker.players.find( player => player.playerNum == id );
+        return this.props.appProps.gameTracker.players.find( player => player.playerNum.toString() === id.toString() );
     }
 
     getBalls( game, playerType ) {
@@ -51,11 +51,11 @@ class Game extends Component {
                     <input 
                         className="form-check-input" 
                         type="checkbox" 
-                        id={`${ playerType }PlayerBall-${ ball.ballNum }`}
+                        id={`Game-${ game.gameNum }-${ playerType }PlayerBall-${ ball.ballNum }`}
                         value={`{ "gameNum": ${ game.gameNum }, "ballNum": ${ ball.ballNum }, "player": "${ playerType }" }`} 
                         checked={ ball.sunk } 
                         onChange={ this.onUpdateBall }/>
-                    <label className={`form-check-label`} htmlFor={`${ playerType }PlayerBall-${ ball.ballNum }`}>{ ball.ballNum }</label>
+                    <label className={`form-check-label`} htmlFor={`Game-${ game.gameNum }-${ playerType }PlayerBall-${ ball.ballNum }`}>{ ball.ballNum }</label>
                 </div>
             )
         );

@@ -11,8 +11,7 @@ class AddGame extends Component {
     onUpdateSolidPlayer( event ) { this.props.appProps.onUpdateSolidPlayer( event.target.value ) };
     onUpdateStripedPlayer( event ) { this.props.appProps.onUpdateStripedPlayer( event.target.value ) };
     onAddGame( event ) { 
-        const players = document.querySelectorAll( '.player' ).forEach( player => player.value = '' );
-        //console.log( players );
+        document.querySelectorAll( '.player' ).forEach( player => player.value = '' );
         event.preventDefault(); 
         this.props.appProps.onAddGame(); 
     }

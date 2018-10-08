@@ -23,7 +23,6 @@ export const addGame = () => ( dispatch, getState ) => {
 
 export const UPDATE_NEW_PLAYER_NAME = 'gameTracker:updateNewPlayerName';
 export const updateNewPlayerName = ( newPlayerName ) => ( dispatch, getState ) => {
-  console.log( newPlayerName );
   dispatch({
     type: UPDATE_NEW_PLAYER_NAME,
     payload: newPlayerName
