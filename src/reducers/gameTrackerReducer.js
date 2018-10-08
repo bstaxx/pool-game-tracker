@@ -1,20 +1,23 @@
-import { ADD_PLAYER, UPDATE_NEW_PLAYER_NAME, UPDATE_SOLID_PLAYER, UPDATE_STRIPED_PLAYER, ADD_GAME } from '../actions/gameTrackerActions';
+import { 
+    ADD_PLAYER, 
+    UPDATE_NEW_PLAYER_NAME, 
+    UPDATE_SOLID_PLAYER, 
+    UPDATE_STRIPED_PLAYER, 
+    ADD_GAME,
+    UPDATE_BALL
+} from '../actions/gameTrackerActions';
 
 export default function gameTrackerReducer( state = {}, { type, payload } ) {
     switch (type) {
         case ADD_PLAYER:
             return {
                 ...state,
-                newPlayer: {
-                    playerName: '',
-                    playerNum: state.newPlayer.playerNum + 1
-                },
                 players: payload,
             };
         case UPDATE_NEW_PLAYER_NAME:
             return {
                 ...state,
-                newPlayer: payload
+                newPlayerName: payload
             };
         case UPDATE_SOLID_PLAYER:
             return {
@@ -41,10 +44,15 @@ export default function gameTrackerReducer( state = {}, { type, payload } ) {
         case ADD_GAME:
             return {
                 ...state,
+                games: payload,
                 newGame: {
                     ...state.newGame,
-                    gameNum: state.newGame.gameNum + 1
-                },
+                    players: { striped: '', solid: '' }
+                }
+            }
+        case UPDATE_BALL:
+            return {
+                ...state,
                 games: payload
             }
         default:

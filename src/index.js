@@ -17,37 +17,42 @@ const allReducers = combineReducers({ gameTracker: gameTrackerReducer });
 
 const initialState = {
     gameTracker: {
-        newPlayer: {
-            playerName: '',
-            playerNum: 1
-        },
+        newPlayerName: '',
         newGame: {
-            gameNum: 1,
             players: {
-                striped: {},
-                solid: {}
+                striped: '',
+                solid: ''
             },
-            balls:{
-                0: { type: 'cue', sunk: false },
-                1: { type: 'solid', sunk: false },
-                2: { type: 'solid', sunk: false },
-                3: { type: 'solid', sunk: false },
-                4: { type: 'solid', sunk: false },
-                5: { type: 'solid', sunk: false },
-                6: { type: 'solid', sunk: false },
-                7: { type: 'solid', sunk: false },
-                8: { type: 'solid', sunk: false },
-                9: { type: 'striped', sunk: false },
-                10: { type: 'striped', sunk: false },
-                11: { type: 'striped', sunk: false },
-                12: { type: 'striped', sunk: false },
-                13: { type: 'striped', sunk: false },
-                14: { type: 'striped', sunk: false },
-                15: { type: 'striped', sunk: false }
-            }
+            balls: [
+                { ballNum: 0, type: 'cue', sunk: false, player: '' },
+                { ballNum: 1, type: 'solid', sunk: false, player: '' },
+                { ballNum: 2, type: 'solid', sunk: false, player: '' },
+                { ballNum: 3, type: 'solid', sunk: false, player: '' },
+                { ballNum: 4, type: 'solid', sunk: false, player: '' },
+                { ballNum: 5, type: 'solid', sunk: false, player: '' },
+                { ballNum: 6, type: 'solid', sunk: false, player: '' },
+                { ballNum: 7, type: 'solid', sunk: false, player: '' },
+                { ballNum: 8, type: 'solid', sunk: false, player: '' },
+                { ballNum: 9, type: 'striped', sunk: false, player: '' },
+                { ballNum: 10, type: 'striped', sunk: false, player: '' },
+                { ballNum: 11, type: 'striped', sunk: false, player: '' },
+                { ballNum: 12, type: 'striped', sunk: false, player: '' },
+                { ballNum: 13, type: 'striped', sunk: false, player: '' },
+                { ballNum: 14, type: 'striped', sunk: false, player: '' },
+                { ballNum: 15, type: 'striped', sunk: false, player: '' }
+            ],
+            status: 'Tied'
         },
-        players: [],
-        games: []
+        players: [
+            { playerNum: '1', playerName: 'Sam' },
+            { playerNum: '2', playerName: 'Billy' },
+            { playerNum: '3', playerName: 'Clyde' },
+            { playerNum: '4', playerName: 'Pam' },
+            { playerNum: '5', playerName: 'Roy' },
+        ],
+        games: [
+            
+        ]
     }
 };
 

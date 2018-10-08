@@ -9,8 +9,8 @@ class Games extends Component {
         this.onAddPlayer = this.onAddPlayer.bind( this );
     }
 
-    onUpdateNewPlayerName( event ) { this.props.appProps.onUpdateNewPlayerName( event.target.value ) };
-    onAddPlayer() { this.props.appProps.onAddPlayer() };
+    onUpdateNewPlayerName( event ) { this.props.appProps.onUpdateNewPlayerName( event.target.value ) }
+    onAddPlayer() { this.props.appProps.onAddPlayer() }
 
     render() {
         const games = this.getGames();
@@ -19,9 +19,9 @@ class Games extends Component {
         <div className="Games">
             <AddGame appProps={ this.props.appProps } />
             <div className={ hasGames ? 'd-none' : 'd-flex justify-content-center mt-3' }>
-                <div className="alert alert-primary" role="alert">Add a game to track.</div>
+                <div className="alert alert-primary" role="alert">Select players to add a game.</div>
             </div>
-            <ul className="list-group row">{ games }</ul>
+            <ul className="list-group">{ games }</ul>
         </div>
         );
     }

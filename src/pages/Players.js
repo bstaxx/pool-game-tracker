@@ -18,6 +18,7 @@ class Players extends Component {
 
     render() {
         const players = this.getPlayers();
+        console.log( players );
         const hasPlayers = players && players.length > 0 ? true : false;
         return(
             <div className="Games">
@@ -32,7 +33,35 @@ class Players extends Component {
 
     getPlayers() {
         return [ ...this.props.appProps.gameTracker.players ]
-            .map( player => <Player key={ player.playerNum } player={ player } appProps={ this.props.appProps } /> );
+            .sort( ( a, b ) => {
+                let bStats = this.getPlayerStats( b.playerNum );
+                let aStats = this.getPlayerStats( a.playerNum );
+                return ( bStats.wins - bStats.loses ) - ( aStats.wins - aStats.loses );
+                //this.getPlayerStats( b.playerNum ).wins - this.getPlayerStats( a.playerNum ).wins
+            })
+            .map( ( player, index ) => 
+                <Player 
+                    key={ player.playerNum }
+                    rank={ index }
+                    player={ player } 
+                    stats={ this.getPlayerStats( player.playerNum ) } 
+                    appProps={ this.props.appProps } /> );
+    }
+
+    getPlayerStats( playerNum ) {
+        const games = this.props.appProps.gameTracker.games;
+        games.filter( game => game.players.solid.toString() === playerNum || game.players.striped.toString() === playerNum );
+        const reducer = ( stats, game ) => {
+            const solidPlayer = game.players.solid.toString();
+            const stripedPlayer = game.players.striped.toString();
+            if ( game.status === "Tied" ) { return { ...stats, tied: stats.tied + 1 }; }
+            if ( solidPlayer === playerNum && game.status.solid === "Won" ) { return { ...stats, wins: stats.wins + 1 } }
+            if ( stripedPlayer === playerNum && game.status.striped === "Won" ) { return { ...stats, wins: stats.wins + 1 } }
+            if ( solidPlayer === playerNum && game.status.solid === "Lose" ) { return { ...stats, loses: stats.loses + 1 } }
+            if ( stripedPlayer === playerNum && game.status.striped === "Lose" ) { return { ...stats, loses: stats.loses + 1 } }
+            return stats;
+        }
+        return games.reduce( reducer, { wins: 0, loses: 0, tied: 0 } );
     }
 
 }

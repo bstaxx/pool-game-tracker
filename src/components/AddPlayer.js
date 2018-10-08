@@ -16,7 +16,8 @@ class AddPlayer extends Component {
     };
 
     render() {
-        const newPlayer = this.props.appProps.gameTracker.newPlayer;
+        const newPlayerName = this.props.appProps.gameTracker.newPlayerName;
+        console.log( this.props );
         return (
             <div className="AddPlayer p-3 bg-dark">
                 <form className="form-inline" >
@@ -27,14 +28,14 @@ class AddPlayer extends Component {
                             className="form-control w-100" 
                             id="newPlayerName" 
                             onChange={ this.onUpdateNewPlayerName }
-                            value={ newPlayer.playerName }
+                            value={ newPlayerName }
                             placeholder="Enter new player name" />
                     </div>
                     <button 
                         type="submit" 
                         className="btn btn-primary"
                         onClick={ this.onAddPlayer }
-                        disabled={ !newPlayer.playerName ? true : false }
+                        disabled={ !newPlayerName ? true : false }
                     >Add Player</button>
                 </form>
             </div>
