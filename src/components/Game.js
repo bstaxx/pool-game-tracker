@@ -62,13 +62,17 @@ class Game extends Component {
     }
 
     getStatusBadge( player, gameStatus ) {
-        if( gameStatus === 'Tied' ) { return <span className={`badge badge-warning badge-pill`}>Tied</span> }
-
+        
         const badges = {
             Winning: 'badge-success',
             Won: 'badge-success',
             Losing: 'badge-danger',
-            Lose: 'badge-danger'
+            Lose: 'badge-danger',
+            Tied: 'badge-warning'
+        }
+
+        if( gameStatus === 'Tied' ) { 
+            return <span className={`badge ${ badges[ gameStatus] } badge-pill`}>{ gameStatus }</span> 
         }
         
         if( player === 'solid' ) {

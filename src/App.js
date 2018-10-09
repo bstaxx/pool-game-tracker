@@ -7,9 +7,8 @@ import {
   updateSolidPlayer, 
   updateStripedPlayer, 
   addGame,
-  updateBall,
-  initPages } from './actions/gameTrackerActions';
-import { Route } from 'react-router-dom';
+  updateBall } from './actions/gameTrackerActions';
+import { Route, Redirect } from 'react-router-dom';
 import Header from './components/Header'
 import Games from './pages/Games';
 import Players from './pages/Players';
@@ -17,41 +16,32 @@ import './App.css';
 
 class App extends Component {
 
-  constructor( props ) {
-    super( props );
-    this.onInitPages = this.onInitPages.bind( this );
-  }
-
-  onInitPages( pages ) { this.props.onInitPages( pages ) }
-
-  componentDidMount() {
-    
-  }
-
   render() {
+    
+    const page = this.getCurrentPage();
+
     return (
       <div className="App">
-
-        <Header></Header>
-
-        <main className="">
-          <Route exact path="/" render={ () => this.getPageCompoenent() } />
-          
-        </main>
-
+        <Header currentPage={ page } appProps={ this.props }></Header>
+        <main><Route exact path="/" render={ () => this.getPageCompoenent( page ) } /></main>
       </div>
     );
+
   }
 
-  getPageCompoenent() {
-    const page = queryString.parse( this.props.router.location.search ).page;
-    console.log( page );
+  getPageCompoenent( page ) {
     switch( page ) {
+      case 'players':
+        return <Players appProps={ this.props } />;
       case 'games':
         return <Games appProps={ this.props } />;
       default :
-        return <Players appProps={ this.props } />;
+        return <Redirect to="?page=players" />;
     }
+  }
+
+  getCurrentPage() {
+    return queryString.parse( this.props.router.location.search ).page;
   }
 
 }
@@ -68,8 +58,7 @@ const mapActionsToProps = {
   onUpdateSolidPlayer: updateSolidPlayer,
   onUpdateStripedPlayer: updateStripedPlayer,
   onAddGame: addGame,
-  onUpdateBall: updateBall,
-  onInitPages: initPages
+  onUpdateBall: updateBall
 };
 
 export default connect( mapStateToProps, mapActionsToProps )(App);

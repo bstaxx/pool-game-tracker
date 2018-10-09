@@ -17,7 +17,7 @@ const allReducers = combineReducers({ gameTracker: gameTrackerReducer });
 
 const initialState = {
     gameTracker: {
-        pages: [],
+        currentPage: '',
         newPlayerName: '',
         newGame: {
             gameNum: '',

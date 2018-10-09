@@ -72,12 +72,3 @@ export const updateBall = ( input ) => ( dispatch, getState ) => {
   });
 
 }
-
-export const INIT_PAGES = 'gameTracker:initPages';
-export const initPages = ( pages ) => ( dispatch, getState ) => {
-  dispatch({
-    type: INIT_PAGES,
-    payload: pages
-  });
-
-}
