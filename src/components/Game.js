@@ -61,22 +61,6 @@ class Game extends Component {
         );
     }
 
-    getGameStatus( game ) {
-        const eightBall = game.balls.filter( ball => ball.ballNum === 8 )[0];
-        const sunkenBalls = {
-            striped: game.balls.filter( ball => ball.sunk && ball.type === "striped" ),
-            solid: game.balls.filter( ball => ball.sunk && ball.type === "solid" )
-        };
-        let status = "Tied";
-        if ( eightBall.sunk && eightBall.player === 'solid' && sunkenBalls.solid.length < 8 ) { status = { solid: 'Lose', striped: 'Won' } }
-        if ( eightBall.sunk && eightBall.player === 'striped' && sunkenBalls.striped.length < 7 ) { status = { solid: 'Won', striped: 'Lose' } }
-        if ( sunkenBalls.solid.length === 8 ) { status = { solid: 'Won', striped: 'Lose' } } 
-        if ( sunkenBalls.striped.length === 7 && eightBall.sunk ) { status = { solid: 'Lose', striped: 'Won' } }
-        if ( sunkenBalls.solid.length > sunkenBalls.striped.length ) { status = { solid: 'Winning', striped: 'Losing' } }
-        if ( sunkenBalls.solid.length < sunkenBalls.striped.length ) { status = { solid: 'Losing', striped: 'Winning' } }
-        return  status;
-    }
-
     getStatusBadge( player, gameStatus ) {
         if( gameStatus === 'Tied' ) { return <span className={`badge badge-warning badge-pill`}>Tied</span> }
 
@@ -88,12 +72,10 @@ class Game extends Component {
         }
         
         if( player === 'solid' ) {
-            //let options = getGameStatus === 'solid' ? { badge: 'badge-success', text: 'Winning' } : { badge: 'badge-danger', text: 'Losing' }
             return <span className={`badge ${ badges[ gameStatus.solid] } badge-pill`}>{ gameStatus.solid }</span>
         }
 
         if( player === 'striped' ) {
-            //let options = getGameStatus === 'striped' ? { badge: 'badge-success', text: 'Winning' } : { badge: 'badge-danger', text: 'Losing' }
             return <span className={`badge ${ badges[ gameStatus.striped] } badge-pill`}>{ gameStatus.striped }</span>
         }
     }
