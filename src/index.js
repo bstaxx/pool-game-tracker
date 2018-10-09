@@ -17,6 +17,7 @@ const allReducers = combineReducers({ gameTracker: gameTrackerReducer });
 
 const initialState = {
     gameTracker: {
+        pages: [],
         newPlayerName: '',
         newGame: {
             gameNum: '',
@@ -95,7 +96,7 @@ const store = createStore(
 ReactDOM.render( 
     <Provider store={ store }>
         <BrowserRouter basename={ window.location.pathname }> 
-            <Route render={(props) => <App router={props} />} />
+            <Route render={ ( props ) => <App router={ props } />} />
         </BrowserRouter>
     </Provider>, 
     document.getElementById('root')

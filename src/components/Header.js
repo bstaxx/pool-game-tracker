@@ -21,7 +21,7 @@ class Header extends Component {
                                 <NavLink exact className="nav-link" to="/" activeClassName="active" >Players</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink className="nav-link" to="/games" activeClassName="active" >Games</NavLink>
+                                <NavLink className="nav-link" to="?page=games" activeClassName="active" >Games</NavLink>
                             </li>
                         </ul>
                     </div>

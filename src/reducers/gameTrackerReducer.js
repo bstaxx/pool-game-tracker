@@ -4,7 +4,8 @@ import {
     UPDATE_SOLID_PLAYER, 
     UPDATE_STRIPED_PLAYER, 
     ADD_GAME,
-    UPDATE_BALL
+    UPDATE_BALL,
+    INIT_PAGES
 } from '../actions/gameTrackerActions';
 
 export default function gameTrackerReducer( state = {}, { type, payload } ) {
@@ -55,6 +56,11 @@ export default function gameTrackerReducer( state = {}, { type, payload } ) {
             return {
                 ...state,
                 games: payload
+            }
+        case INIT_PAGES:
+            return {
+                ...state,
+                pages: payload
             }
         default:
             return state;
